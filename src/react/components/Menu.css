@@ -1,0 +1,20 @@
+#menu {
+  background-color: lightskyblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
+  border-radius: 1em;
+}
+
+#menu-links {
+  display: flex;
+  padding-left: 1em;
+}
+
+#menu-links a {
+  padding-right: 0.5em;
+  color: darkblue;
+  text-decoration: underline;
+  cursor: pointer;
+}
