@@ -2,21 +2,21 @@ import { createBrowserHistory } from "history";
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
-import { reducers as authReducers } from "./auth";
+import { authReducer } from "./auth";
 
 export * from "./auth";
 
 export const history = createBrowserHistory({
-  basename: process.env.PUBLIC_URL
+  basename: process.env.PUBLIC_URL,
 });
 
 export const store = configureStore({
   reducer: {
     router: connectRouter(history),
-    auth: combineReducers(authReducers)
+    auth: combineReducers(authReducer),
   },
   preloadedState: {},
-  devTools: process.env.NODE_ENV !== "production"
+  devTools: process.env.NODE_ENV !== "production",
 });
 
 store.subscribe(() => {
