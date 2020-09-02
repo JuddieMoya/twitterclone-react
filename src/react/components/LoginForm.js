@@ -5,11 +5,17 @@ import { login } from "../../redux";
 import "./LoginForm.css";
 
 class LoginForm extends React.Component {
-  state = { username: "", password: "" };
+  state = { 
+   username: "", 
+   password: "" 
+  };
 
   handleLogin = e => {
     e.preventDefault();
-    this.props.login(this.state);
+    this.props.login({
+      username: this.state.username,
+      password: this.state.password
+    });
   };
 
   handleChange = e => {
