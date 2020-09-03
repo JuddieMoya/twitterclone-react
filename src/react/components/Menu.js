@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./Menu.css";
 import { connect } from "react-redux";
 import { updateUser } from "../../redux/users";
-import { domain } from '../../redux/helpers';
 import { logout } from "../../redux";
 import userInfo from './user.json';
 
@@ -18,7 +17,7 @@ class Menu extends React.Component {
   }
 
   componentDidMount() {
-    fetch(domain + "/users/" + this.props.user)
+    fetch("https://kwitter-api.herokuapp.com/users/" + this.props.user)
       .then(response => response.json())
       .then((data) => {
         if(data.user.pictureLocation !== null) {
