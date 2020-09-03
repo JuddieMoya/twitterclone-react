@@ -1,0 +1,12 @@
+{
+    "user": {
+      "username": "string",
+      "displayName": "string",
+      "about": "string",
+      "createdAt": "2020-06-14T19:13:00.808Z",
+      "updatedAt": "2020-06-14T19:13:00.808Z",
+      "pictureLocation": "string",
+      "googleId": "string"
+    },
+    "statusCode": 0
+  }
