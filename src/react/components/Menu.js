@@ -9,11 +9,11 @@ import userInfo from './user.json';
 class Menu extends React.Component {
   
 
-  handleLogout = event => {
-    event.preventDefault();
-    updateUser('');
-    this.props.logout();
-  };
+  // handleLogout = event => {
+  //   event.preventDefault();
+  //   updateUser('');
+  //   this.props.logout();
+  // };
   
   render() {
     return (
