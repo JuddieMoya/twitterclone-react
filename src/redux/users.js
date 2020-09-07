@@ -1,23 +1,34 @@
-import { store } from "./";
+import {
+    domain,
+    jsonHeaders,
+    handleJsonResponse,
+    getInitStateFromStorage,
+    asyncInitialState,
+    asyncCases,
+    createActions,
+    createReducer,
+  } from "./helpers";
 
+  const url = domain + "/users";
 
-export const updateUser = (input) => {
-    let name = input.username;
-    store.dispatch(addUsername(name));
-}
+  const CREATEUSER = createActions("newuser");
+  export const newuser = (userData) => (dispatch) => {
+    dispatch(CREATEUSER.START());
 
-const addUsername = (name) => {
-    return {
-        type: 'CHANGE_USER',
-        text: name
-    }
-}
+    return fetch(url, {
+      method: "POST",
+      headers: jsonHeaders,
+      body: JSON.stringify(userData),
+      
+    })
+    .then(handleJsonResponse)
+    .then((result) => dispatch(CREATEUSER.SUCCESS(result)))
+    .catch((err) => Promise.reject(dispatch(CREATEUSER.FAIL(err))));
+};
 
-export const changeUsernameReducer = (state = {user: ''}, action) => {
-    switch(action.type) {
-        case 'CHANGE_USER':
-            return {user: action.text};
-        default: 
-            return state;
-    }
-}
+export const userReducer = {
+  newuser: createReducer(getInitStateFromStorage("newuser", asyncInitialState), {
+    ...asyncCases(CREATEUSER),
+  }),
+ 
+};
