@@ -6,7 +6,7 @@ import Messages from "./components/Messages"
 import NotFound from "./NotFound";
 import SignUpForm from "./components/SignUpForm/SignUpForm";
 import LoginForm from "./components/LoginForm/LoginForm"
-import Messages from "./components/Messages/Messages";
+// import Messages from "./components/Messages/Messages";
 
 class App extends React.Component {
   render() {
