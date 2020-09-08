@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import Profile from "./Profile";
+import Messages from "./components/Messages"
 import NotFound from "./NotFound";
 import SignUpForm from "./components/SignUpForm/SignUpForm";
 import LoginForm from "./components/LoginForm/LoginForm"
