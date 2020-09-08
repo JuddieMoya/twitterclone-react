@@ -9,15 +9,9 @@ import {
   createReducer,
 } from "./helpers";
 
-
-
-
 const url = domain + "/auth";
 
-
-
 const LOGIN = createActions("login");
-
 export const login = (loginData) => (dispatch) => {
   dispatch(LOGIN.START());
 
@@ -45,6 +39,9 @@ export const logout = () => (dispatch, getState) => {
     .then((result) => dispatch(LOGOUT.SUCCESS(result)))
     .catch((err) => Promise.reject(dispatch(LOGOUT.FAIL(err))));
 };
+
+
+  
 
 export const authReducer = {
   login: createReducer(getInitStateFromStorage("login", asyncInitialState), {
