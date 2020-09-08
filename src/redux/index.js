@@ -4,8 +4,9 @@ import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
 import { authReducer } from "./auth";
 import { userReducer } from "./users"
+import { msgReducer } from "./messages"
 
-
+export * from "./messages"
 export * from "./auth";
 export * from "./users";
 
@@ -18,6 +19,7 @@ export const store = configureStore({
     router: connectRouter(history),
     auth: combineReducers(authReducer),
     users: combineReducers(userReducer),
+    messages: combineReducers(msgReducer)
   },
   preloadedState: {},
   devTools: process.env.NODE_ENV !== "production",
