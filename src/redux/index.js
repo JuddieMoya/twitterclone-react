@@ -3,8 +3,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
 import { authReducer } from "./auth";
-import { userReducer } from "./users"
-import { msgReducer } from "./messages"
+import { userReducer } from "./users";
+import { msgReducer } from "./messages";
+import {msgListReducer} from "./messagelistreducers.js";
 
 export * from "./messages"
 export * from "./auth";
@@ -19,7 +20,8 @@ export const store = configureStore({
     router: connectRouter(history),
     auth: combineReducers(authReducer),
     users: combineReducers(userReducer),
-    messages: combineReducers(msgReducer)
+    messages: combineReducers(msgReducer),
+    getMessage: combineReducers(msgListReducer)
   },
   preloadedState: {},
   devTools: process.env.NODE_ENV !== "production",
