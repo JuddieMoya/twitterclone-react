@@ -3,14 +3,15 @@ import Link from "@material-ui/core/Link";
 import { connect } from "react-redux";
 import { newmessage } from "../../../redux";
 import Spinner from "react-spinkit";
+import MessageList from "./MessageList"
 
+fetch('https://kwitter-api.herokuapp.com/messages?limit=15&offset=0')
+.then(response => response.json())
+.then(text => console.log(text.messages));
 
-
-// import { UPDATE_MESSAGE } from "../../../actions/messages";
-
-
-
-
+function refreshPage() {
+    window.location.reload(false);
+  }
 
 
 
@@ -35,8 +36,12 @@ handleSubmit = (e) => {
     render() {
         const { loading, error } = this.props;
         return (
+            
             <div>
+               
             <h1>Messages</h1>
+            <MessageList />
+        
             
             <form id="message-update" onSubmit={this.handleSubmit}>
                 <input
@@ -44,11 +49,15 @@ handleSubmit = (e) => {
                 name="text"
                 onChange={this.handleChange}/>
                 <button type="submit"
-                disabled={loading}>Submit</button>
+                disabled={loading}
+                onClick={refreshPage}>Submit</button>
             </form>
             <Link href="/" variant="body2">
                   {"Homepage"}
                 </Link>
+                <br/>
+            <Link href="/messagelist" variant="body2">
+            {"Message List"}</Link>
                 {loading && <Spinner name="circle" color="blue" />}
             {error && <p style={{ color: "red" }}>{error.message}</p>}
             </div>
