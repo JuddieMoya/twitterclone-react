@@ -3,14 +3,20 @@ import Link from "@material-ui/core/Link";
 import { connect } from "react-redux";
 import { newmessage } from "../../../redux";
 import Spinner from "react-spinkit";
+import MessageList from "./MessageList"
+import Menu from "../Menu/Menu"
+import { Button, Comment, Form, Header } from 'semantic-ui-react'
+import Container from "@material-ui/core/Container";
 
+import "./Messages.css";
 
+fetch('https://kwitter-api.herokuapp.com/messages?limit=15&offset=0')
+.then(response => response.json())
+.then(text => console.log(text.messages));
 
-// import { UPDATE_MESSAGE } from "../../../actions/messages";
-
-
-
-
+function refreshPage() {
+    window.location.reload(false);
+  }
 
 
 
@@ -35,23 +41,37 @@ handleSubmit = (e) => {
     render() {
         const { loading, error } = this.props;
         return (
-            <div>
-            <h1>Messages</h1>
+
+          
+            <Container fixed>
+                <Menu />
+                <Link href="/" variant="body2">
+                  {<h1>Homepage</h1>}
+                </Link>
+               <MessageList />
+           
+          
+        
             
-            <form id="message-update" onSubmit={this.handleSubmit}>
-                <input
+            <Form id="message-update" onSubmit={this.handleSubmit}>
+                <Form.TextArea
                 type="text"
                 name="text"
                 onChange={this.handleChange}/>
-                <button type="submit"
-                disabled={loading}>Submit</button>
-            </form>
-            <Link href="/" variant="body2">
-                  {"Homepage"}
-                </Link>
+                <Button type="submit"
+                disabled={loading}
+                onClick={refreshPage} 
+                content='Add Message'
+                labelPosition='left' 
+                icon='edit'
+                primary />
+            </Form>
+           
+                <br/>
+            
                 {loading && <Spinner name="circle" color="blue" />}
             {error && <p style={{ color: "red" }}>{error.message}</p>}
-            </div>
+            </Container>
             )
     }
     }
