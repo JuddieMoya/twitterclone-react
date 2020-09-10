@@ -11,8 +11,6 @@ class UserList extends React.Component {
   }
 
   componentDidMount(){
-      // I will use fake api from jsonplaceholder website
-      // this return 100 posts 
       fetch("https://kwitter-api.herokuapp.com/users?limit=15&offset=0")
       .then( response => response.json())
       .then(

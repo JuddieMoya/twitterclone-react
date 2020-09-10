@@ -34,8 +34,13 @@ class Profile extends React.Component {
    const request = {
      method: "DELETE"
    }
-   fetch("https://kwitter-api.herokuapp.com/users/" + username, request)
-   .then(response => response.json()) 
+   fetch("https://kwitter-api.herokuapp.com/users/" + {username}, request)
+   .then((response) => {
+     return response.json()
+   })
+   .then((result) => {
+     console.log(result)
+   })
  }
 
 
@@ -56,7 +61,6 @@ class Profile extends React.Component {
           component="img"
           alt="Avatar"
           height="140"
-          image="../img/avatar.png"
           title="Default Avatar"
         />
        <CardContent>
@@ -67,7 +71,7 @@ class Profile extends React.Component {
       </CardActionArea>
      <Button>Edit Profile</Button>
      <Button style={{color: "#FF3333"}}
-     onClick={console.log("holder")}
+     onClick={() => { this.handleDeleteUser(this.state.user.user )}}
      >Delete Profile
      </Button>
    </Card>
