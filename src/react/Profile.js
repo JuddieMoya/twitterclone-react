@@ -78,7 +78,7 @@ class Profile extends React.Component {
    </Grid>
       </> 
   }
-  <h2>Other Users</h2>
+  <h2>Users List</h2>
   <UsersList/>
       </>
     );
