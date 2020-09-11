@@ -5,6 +5,9 @@ import { connectRouter } from "connected-react-router";
 import { authReducer } from "./auth";
 import { userReducer } from "./users"
 import { msgReducer } from "./messages"
+import { likesReducer } from "./likes"
+import { addlike } from "./likes";
+
 
 export * from "./messages"
 export * from "./auth";
@@ -19,7 +22,8 @@ export const store = configureStore({
     router: connectRouter(history),
     auth: combineReducers(authReducer),
     users: combineReducers(userReducer),
-    messages: combineReducers(msgReducer)
+    messages: combineReducers(msgReducer),
+    addLikes: combineReducers (likesReducer)
   },
   preloadedState: {},
   devTools: process.env.NODE_ENV !== "production",

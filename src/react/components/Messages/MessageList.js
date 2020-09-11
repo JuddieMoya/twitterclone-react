@@ -33,9 +33,30 @@ class MessageList extends Component {
         }
       );
   }
+  componentDidMount() {
+    fetch("https://kwitter-api.herokuapp.com/likes")
+      .then((response) => response.json())
+      .then(
+        // handle the result
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            addLike: result.messageId,
+          });
+        },
+
+        // Handle error
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error,
+          });
+        }
+      );
+  }
 
   render() {
-    const { error, isLoaded, messages } = this.state;
+    const { error, isLoaded, messages, addLike } = this.state;
 
     if (error) {
       return <div>Error in loading</div>;
