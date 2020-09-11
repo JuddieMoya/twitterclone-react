@@ -17,7 +17,6 @@ class App extends React.Component {
         <Route exact path="/signUp" component={SignUpForm} />
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/messagefeed" component={Messages} />
-        <Route exact path="/messagelist" component={MessageList} />
         <Route path="*" component={NotFound} />
 
       </Switch>

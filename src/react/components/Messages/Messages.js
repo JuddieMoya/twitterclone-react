@@ -20,7 +20,7 @@ function refreshPage() {
 
 
 
-class postMessage extends React.Component {
+class Messages extends React.Component {
     state = {
         text: "",
     }
@@ -44,12 +44,12 @@ handleSubmit = (e) => {
 
           
             <Container fixed>
-                <Menu />
+              <Menu />
                 <Link href="/" variant="body2">
                   {<h1>Homepage</h1>}
                 </Link>
                <MessageList />
-           
+
           
         
             
@@ -85,5 +85,5 @@ handleSubmit = (e) => {
             
             }),
             { newmessage }
-          )(postMessage);
+          )(Messages);
           
