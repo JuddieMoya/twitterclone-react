@@ -2,7 +2,6 @@ import {EDIT_USER} from "../actions/editUser"
 
 
 const initialState = {
-  id: null,
   displayName: "",
   about: "",
   lastUpdated: Date.now(),
@@ -15,7 +14,7 @@ export default (state = initialState, action) => {
     case EDIT_USER:
       return {
         ...state,
-        id: action.payload.id,
+        username: action.payload.username,
         displayName: action.payload.displayName,
         about: action.payload.about,
         lastUpdated: Date.now()

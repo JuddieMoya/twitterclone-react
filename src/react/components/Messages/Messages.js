@@ -14,20 +14,21 @@ fetch('https://kwitter-api.herokuapp.com/messages?limit=15&offset=0')
 .then(response => response.json())
 .then(text => console.log(text.messages));
 
-function refreshPage() {
-    window.location.reload(false);
-  }
+function refreshPage() {  
+  window.location.reload(false);  
+}
 
 
 
-class postMessage extends React.Component {
-    state = {
+
+ class postMessage extends React.Component {
+   state = {
         text: "",
     }
 
     
 
-handleSubmit = (e) => {
+ handleSubmit = (e) => {
     e.preventDefault();
     this.props.newmessage(this.state);
   };
@@ -74,7 +75,7 @@ handleSubmit = (e) => {
             </Container>
             )
     }
-    }
+  }
         
 
         export default connect(
