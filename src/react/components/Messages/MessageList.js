@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Comment, Form, Header } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+import { Drawer } from "@material-ui/core";
 
 class MessageList extends Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class MessageList extends Component {
     } else {
       return (
         <Comment.Group>
-          <Header as="h3" dividing>
+          <Header as="h1" dividing>
             Messages
           </Header>
           <ol className="item">
@@ -52,21 +53,22 @@ class MessageList extends Component {
               <li key={message.id} align="start">
                 <Comment>
                   <Comment.Author>
-                    {<strong>{message.username}</strong>}
+                    {
+                      <strong>
+                        <u>{message.username}</u>
+                      </strong>
+                    }
                   </Comment.Author>
                   <Comment.Text>{message.text}</Comment.Text>
                   <Comment.Metadata>
                     {<em>id: {message.id}</em>}
                   </Comment.Metadata>
-                  
                 </Comment>
-                <br/>
+                <br />
               </li>
             ))}
           </ol>
-          
         </Comment.Group>
-
       );
     }
   }

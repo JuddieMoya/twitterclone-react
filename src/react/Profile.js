@@ -7,8 +7,12 @@ import { Avatar, CardContent } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import UsersList from "./components/Users/UserList";
+<<<<<<< HEAD
 import defaultPicture from "../img/avatar.png"
 import { domain } from "../redux/helpers"
+=======
+import Drawer from "./components/Drawer/Drawer"
+>>>>>>> 31dc4a86f3bdcd4830cd9b8c9c3427e8f0db92bc
 
 
 class Profile extends React.Component {
@@ -27,6 +31,23 @@ class Profile extends React.Component {
        }) 
       .catch(err => console.log(err))
  }
+<<<<<<< HEAD
+=======
+  
+ handleDeleteUser = username => {
+   const request = {
+     method: "DELETE"
+     
+   }
+   fetch("https://kwitter-api.herokuapp.com/users/" + {username}, request)
+   .then((response) => {
+     return response.json()
+   })
+   .then((result) => {
+     console.log(result)
+   })
+ }
+>>>>>>> 31dc4a86f3bdcd4830cd9b8c9c3427e8f0db92bc
 
     handleUploadPicture = (event) => {
       event.preventDefault();
@@ -41,12 +62,23 @@ class Profile extends React.Component {
       ? domain + this.state.pictureLocation
       : defaultPicture;
     return (
+      
+     
       <>
+      
       {this.state  && this.state.user.user &&
       <>
         <Menu displayName={this.state.user.user.displayName} isAuthenticated={this.props.isAuthenticated} />
         <h2>Profile</h2>
+<<<<<<< HEAD
       <Grid container>
+=======
+      {/* <h2>{this.state.user.user.displayName}</h2>     */}
+      <Grid container
+      direction="row"
+      justify="center"
+      alignItems="center">
+>>>>>>> 31dc4a86f3bdcd4830cd9b8c9c3427e8f0db92bc
       <Card style={{
         backgroundColor: "#33C1FF"
        }} >
@@ -62,13 +94,26 @@ class Profile extends React.Component {
        <Typography  component="h1" variant="h6">
          Display Name : {this.state.user.user.displayName}
        </Typography>
+<<<<<<< HEAD
        </CardContent>
      </Card>
+=======
+     </CardContent>
+      </CardActionArea>
+     <Button>Edit Profile</Button>
+     <Button style={{color: "#FF3333"}}
+     onClick={() => { this.handleDeleteUser(this.state.user.username )}}
+     >Delete Profile
+     </Button>
+   </Card>
+   <UsersList/>
+>>>>>>> 31dc4a86f3bdcd4830cd9b8c9c3427e8f0db92bc
    </Grid>
+  
       </> 
   }
-  <h2>Users List</h2>
-  <UsersList/>
+  
+  
       </>
     );
   }

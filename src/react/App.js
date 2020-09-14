@@ -7,6 +7,8 @@ import SignUpForm from "./components/SignUpForm/SignUpForm";
 import LoginForm from "./components/LoginForm/LoginForm"
 import Messages from "./components/Messages/Messages";
 import MessageList from "./components/Messages/MessageList"
+import DeleteMessage from "./components/Messages/DeleteMessage";
+import AddLike from "./components/Likes/AddLike";
 
 class App extends React.Component {
   render() {
@@ -18,7 +20,10 @@ class App extends React.Component {
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/messagefeed" component={Messages} />
         <Route exact path="/messagelist" component={MessageList} />
+        <Route exact path="/delMsg" component={DeleteMessage} />
+        <Route exact path="/likes" component={AddLike} />
         <Route path="*" component={NotFound} />
+
 
       </Switch>
     );
