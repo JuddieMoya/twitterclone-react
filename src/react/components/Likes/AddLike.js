@@ -1,36 +1,36 @@
 import React from "react";
 import Link from "@material-ui/core/Link";
 import { connect } from "react-redux";
-import { newmessage } from "../../../redux";
+import { addlike } from "../../../redux"
 import Spinner from "react-spinkit";
-import MessageList from "./MessageList"
+import MessageList from "../Messages/MessageList"
 import Menu from "../Menu/Menu"
 import { Button, Comment, Form, Header } from 'semantic-ui-react'
 import Container from "@material-ui/core/Container";
-import DeleteMessage from "./DeleteMessage"
+import DeleteMessage from "../Messages/DeleteMessage"
 
-import "./Messages.css";
+import "../Messages/Messages.css";
 
 fetch('https://kwitter-api.herokuapp.com/messages?limit=15&offset=0')
 .then(response => response.json())
 .then(text => console.log(text.messages));
 
-function refreshPage() {
-  setInterval(function(){window.location.reload(false);; }, 500) 
-  }
+// function refreshPage() {
+//   setInterval(function(){window.location.reload(false);; }, 500) 
+//   }
 
 
 
-class postMessage extends React.Component {
+class AddLike extends React.Component {
     state = {
-        text: "",
+        messageId: "",
     }
 
     
 
 handleSubmit = (e) => {
     e.preventDefault();
-    this.props.newmessage(this.state);
+    this.props.addlike(this.state);
   };
 
   handleChange = (e) => {
@@ -57,15 +57,15 @@ handleSubmit = (e) => {
             <Form id="message-update" onSubmit={this.handleSubmit}>
                 <Form.TextArea
                 type="text"
-                name="text"
+                name="messageId"
                 onChange={this.handleChange}/>
                 <Button.Group>
                 <Button type="submit"
                 disabled={loading}
-                onClick={refreshPage} 
-                content='Add Message'
+                // onClick={refreshPage} 
+                content='Like'
                 labelPosition='left' 
-                icon='edit'
+                icon='thumbs up'
                 primary />
                 <DeleteMessage />
                 </Button.Group>
@@ -84,11 +84,11 @@ handleSubmit = (e) => {
 
         export default connect(
             (state) => ({
-                result: state.messages.newmessage.result,
-                loading: state.messages.newmessage.loading,
-                error: state.messages.newmessage.error,
+                result: state.likes.addlike.result,
+                loading: state.likes.addlike.loading,
+                error: state.likes.addlike.error,
             
             }),
-            { newmessage }
-          )(postMessage);
+            { addlike }
+          )(AddLike);
           

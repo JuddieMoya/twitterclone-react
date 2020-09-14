@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import UsersList from "./components/Users/UserList";
-
+import Drawer from "./components/Drawer/Drawer"
 
 
 class Profile extends React.Component {
@@ -33,6 +33,7 @@ class Profile extends React.Component {
  handleDeleteUser = username => {
    const request = {
      method: "DELETE"
+     
    }
    fetch("https://kwitter-api.herokuapp.com/users/" + {username}, request)
    .then((response) => {
@@ -46,7 +47,10 @@ class Profile extends React.Component {
 
   render() {
     return (
+      
+     
       <>
+      
       {this.state  && this.state.user.user &&
       <>
         <Menu displayName={this.state.user.user.displayName} isAuthenticated={this.props.isAuthenticated} />
@@ -71,14 +75,15 @@ class Profile extends React.Component {
       </CardActionArea>
      <Button>Edit Profile</Button>
      <Button style={{color: "#FF3333"}}
-     onClick={() => { this.handleDeleteUser(this.state.user.user )}}
+     onClick={() => { this.handleDeleteUser(this.state.user.username )}}
      >Delete Profile
      </Button>
    </Card>
    </Grid>
+  
       </> 
   }
-  <h2>Users List</h2>
+  
   <UsersList/>
       </>
     );

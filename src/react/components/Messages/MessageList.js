@@ -52,7 +52,7 @@ class MessageList extends Component {
               <li key={message.id} align="start">
                 <Comment>
                   <Comment.Author>
-                    {<strong>{message.username}</strong>}
+                    {<strong><u>{message.username}</u></strong>}
                   </Comment.Author>
                   <Comment.Text>{message.text}</Comment.Text>
                   <Comment.Metadata>
