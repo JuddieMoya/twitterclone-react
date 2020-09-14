@@ -15,18 +15,9 @@ fetch('https://kwitter-api.herokuapp.com/messages?limit=15&offset=0')
 .then(response => response.json())
 .then(text => console.log(text.messages));
 
-<<<<<<< HEAD
 function refreshPage() {  
   window.location.reload(false);  
 }
-
-=======
-function refreshPage() {
-  setInterval(function(){window.location.reload(false);; }, 500) 
-  }
->>>>>>> 31dc4a86f3bdcd4830cd9b8c9c3427e8f0db92bc
-
-
 
  class postMessage extends React.Component {
    state = {
