@@ -6,10 +6,11 @@ import Button from '@material-ui/core/Button';
 import { Avatar, CardContent } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import UsersList from "./components/Users/UserList";
 import defaultPicture from "../img/avatar.png"
 import { domain } from "../redux/helpers"
 import UserList from "./components/Users/UserList";
+import Drawer from "./components/Drawer/Drawer"
+
 
 
 class Profile extends React.Component {
