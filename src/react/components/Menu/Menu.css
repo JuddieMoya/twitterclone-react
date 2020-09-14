@@ -18,3 +18,20 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.drawerPaper {
+  width: inherit;
+}
+
+.link {
+  text-decoration: none;
+  
+}
+
+.heading {
+  align-items: center;
+}
+
+.logo {
+  margin-left: 55px;
+}

@@ -7,6 +7,7 @@ import MessageList from "./MessageList"
 import Menu from "../Menu/Menu"
 import { Button, Comment, Form, Header } from 'semantic-ui-react'
 import Container from "@material-ui/core/Container";
+import DeleteMessage from "./DeleteMessage"
 
 import "./Messages.css";
 
@@ -15,7 +16,7 @@ fetch('https://kwitter-api.herokuapp.com/messages?limit=15&offset=0')
 .then(text => console.log(text.messages));
 
 function refreshPage() {
-    window.location.reload(false);
+  setInterval(function(){window.location.reload(false);; }, 500) 
   }
 
 
@@ -42,36 +43,42 @@ handleSubmit = (e) => {
         const { loading, error } = this.props;
         return (
 
+            <div>
+              <Menu />
+                  <Container fixed>
+               
+              
+              <MessageList />
           
-            <Container fixed>
-                <Menu />
-                <Link href="/" variant="body2">
-                  {<h1>Homepage</h1>}
-                </Link>
-               <MessageList />
+         
+      
            
-          
+           <Form id="message-update" onSubmit={this.handleSubmit}>
+               <Form.TextArea
+               type="text"
+               name="text"
+               onChange={this.handleChange}/>
+               <Button.Group>
+               <Button type="submit"
+               disabled={loading}
+               onClick={refreshPage} 
+               content='Add Message'
+               labelPosition='left' 
+               icon='edit'
+               primary />
+               <DeleteMessage />
+               </Button.Group>
+            
+           </Form>
+           
+               <br/>
+           
+               {loading && <Spinner name="circle" color="blue" />}
+           {error && <p style={{ color: "red" }}>{error.message}</p>}
+           </Container>
+            </div>
         
-            
-            <Form id="message-update" onSubmit={this.handleSubmit}>
-                <Form.TextArea
-                type="text"
-                name="text"
-                onChange={this.handleChange}/>
-                <Button type="submit"
-                disabled={loading}
-                onClick={refreshPage} 
-                content='Add Message'
-                labelPosition='left' 
-                icon='edit'
-                primary />
-            </Form>
            
-                <br/>
-            
-                {loading && <Spinner name="circle" color="blue" />}
-            {error && <p style={{ color: "red" }}>{error.message}</p>}
-            </Container>
             )
     }
     }
