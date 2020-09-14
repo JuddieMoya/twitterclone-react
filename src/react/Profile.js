@@ -56,7 +56,10 @@ class Profile extends React.Component {
         <Menu displayName={this.state.user.user.displayName} isAuthenticated={this.props.isAuthenticated} />
         <h2>Profile</h2>
       {/* <h2>{this.state.user.user.displayName}</h2>     */}
-      <Grid container>
+      <Grid container
+      direction="row"
+      justify="center"
+      alignItems="center">
       <Card style={{
         backgroundColor: "#33C1FF"
       }} >
@@ -79,12 +82,13 @@ class Profile extends React.Component {
      >Delete Profile
      </Button>
    </Card>
+   <UsersList/>
    </Grid>
   
       </> 
   }
   
-  <UsersList/>
+  
       </>
     );
   }

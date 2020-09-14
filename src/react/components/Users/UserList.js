@@ -6,6 +6,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import Typography from "@material-ui/core/Typography";
 
 fetch("https://kwitter-api.herokuapp.com/users?limit=15&offset=0")
   .then((res) => res.json())
@@ -53,6 +54,9 @@ class UserList extends React.Component {
     } else {
       return (
         <div>
+          <Typography component="h2" variant="h6" color="primary" gutterBottom>
+            Recently created users
+          </Typography>
           <Table size="small">
             <TableHead>
               <TableRow>
@@ -66,7 +70,7 @@ class UserList extends React.Component {
                 <TableRow key={user.username} align="start">
                   <TableCell>{user.username}</TableCell>
                   <TableCell>{user.displayName}</TableCell>
-                  <TableCell></TableCell>
+                  <TableCell>{user.createdAt}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
