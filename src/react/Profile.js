@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import UsersList from "./components/Users/UserList";
 import defaultPicture from "../img/avatar.png"
 import { domain } from "../redux/helpers"
+import UserList from "./components/Users/UserList";
 
 
 class Profile extends React.Component {
@@ -72,7 +73,7 @@ class Profile extends React.Component {
       </> 
   }
   
-  
+  <UserList/>
       </>
     );
   }
